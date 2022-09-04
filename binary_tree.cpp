@@ -6,7 +6,6 @@ struct Node{
 	Node *left,*right;
 };
 
-//function to create node
 Node *newNode(char Data) 
 {
 	Node *new_node = new Node;
@@ -15,7 +14,6 @@ Node *newNode(char Data)
 	return new_node;
 }
 
-//function to traverse preorder
 void preorder(Node *root){ 
 	if(root==NULL)
 		return;
@@ -24,7 +22,6 @@ void preorder(Node *root){
 	preorder(root->right);
 }
 
-//recursive function to build the tree
 Node *convertExpression(string str,int& i) 
 {
 	Node* root=newNode(str[i]);
@@ -32,6 +29,7 @@ Node *convertExpression(string str,int& i)
 	if(i<str.length() && str[i]=='?'){
 		i++;
 		root->left=convertExpression(str,i);
+		i++; 
 		root->right=convertExpression(str,i);
 	}
 	return root;
